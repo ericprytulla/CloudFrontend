@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+// Colors
+$greenSeaweed: rgba(2, 128, 144, 1);
+$blueQueen: rgba(69, 105, 144, 1);
+$redFire: rgba(244, 91, 105, 1);
+
+// Fonts
+$fontAsap: 'Asap', sans-serif;
+
+html  {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $redFire;
+  font-family: $fontAsap;
+}
+
+

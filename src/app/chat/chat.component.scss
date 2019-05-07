@@ -1,0 +1,154 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font: 13px Helvetica, Arial; }
+form { position: relative; width: 100%; }
+form input { margin-left: 0.5%; border: 0; padding: 10px; width: 80%; border-radius: 15px;}
+.button { margin-left: 0.5%; border: 0; padding: 10px; width: 9%; background: rgb(130, 224, 255); border-radius: 15px}
+#messages {
+  width: 100%;
+  height: calc(100% - 93px);
+  margin: 0;
+  overflow-y: scroll;
+}
+
+#chat-component-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+}
+.clickable:hover {
+  background: #eee;
+}
+.selected-room {
+  background: aquamarine;
+}
+
+.alert {
+  z-index: 1000;
+  width:100%;
+  height:0;
+  box-sizing:border-box;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+  box-sizing:border-box;
+  transition:height .2s;
+  display: inline-block;
+}
+.positive {
+  background:rgba(0,200,0,1);
+}
+.negative {
+  background:rgba(200,0,0,1);
+}
+
+#chat-rooms-selector {
+  position: relative;
+  float: left;
+  width: 20%;
+  height: 100%;
+  background: #fff;
+}
+
+.chat-room-selector {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 50px;
+  background: #eee;
+  border-bottom: 2px solid #ccc;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+#add-group {
+  width: 100%;
+  height: 50px;
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+#join-chat {
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+}
+
+#chat-room {
+  position: relative;
+  float: left;
+  width: 80%;
+  height: 100%;
+  box-sizing: padding-box;
+}
+
+#header {
+  position: relative;
+  width: 100%;
+  text-wrap: normal;
+  height: 50px;
+  background: #fff;
+}
+
+.message-wrapper {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.message-personal {
+  float: right;
+  padding: 10px;
+  margin: 5px;
+  width: 70%;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.message {
+  float: left;
+  padding: 10px;
+  margin: 5px;
+  width: 70%;
+  border-radius: 10px;
+  background: #ddd;
+}
+.message-sender {
+  float: left;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background: #00f;
+  color: #fff;
+}
+
+.message-text {
+  width: 100%;
+}
+
+.message-timestamp {
+  position: relative;
+  float: right;
+  font-size: 0.7em;
+  text-align: right;
+  color: lightslategrey;
+}
+
+.message-mood {
+  position: relative;
+  float: left;
+  font-size: 0.7em;
+  text-align: left;
+  color: lightslategrey;
+}
+
+.active{
+  height:50px;
+  line-height: 49px;
+}

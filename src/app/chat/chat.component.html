@@ -1,0 +1,41 @@
+<div id="chat-component-wrapper" [style.background-color]="ConservationMood">
+  <div id="chat-rooms-selector">
+    <div *ngFor="let room of chatrooms | keyvalue" class="chat-room-selector" (click)="selected = room.key">
+      <div class="centered-text" [ngClass]="room.key==selected?'selected-room':''">{{room.value.name}}</div>
+    </div>
+    <button id="add-group" (click)="onClickCreateGroup()">
+      +
+    </button>
+  </div>
+  <div id="chat-room">
+    <div id="header">
+      <p>
+        <span *ngIf="chatrooms[selected].isMember">You</span>
+        <span *ngFor="let user of chatrooms[selected].users" (click)="onClickPrivateMessage(user)" class="clickable">, {{user.name}}</span>
+      </p>
+    </div>
+    <div id="messages">
+      <div [ngClass]="{'positive':positive, 'negative': !positive, 'active': alertMessage}" class="alert" ><span>{{alertMessage}}</span></div>
+      <div class="message-wrapper" *ngFor="let msg of chatrooms[selected].messages">
+        <div *ngIf="msg.senderId" class="message-sender">{{msg.senderName}}:</div>
+        <div [ngClass]="msg.senderId?'message':'message-personal'" class="message-personal">
+          <div class="message-text">{{msg.message}}</div>
+          <div *ngIf="msg.media">
+            <img *ngIf="msg.media.split(':')[1].split('/')[0] == 'image'" [src]="msg.media" width="500px" alt="">
+            <video *ngIf="msg.media.split(':')[1].split('/')[0] == 'video'" [src]="msg.media" width="500px"></video>
+            <audio *ngIf="msg.media.split(':')[1].split('/')[0] == 'audio'" [src]="msg.media" width="500px"></audio>
+          </div>
+          <div class="message-mood">{{msg.mood}}</div>
+          <div class="message-timestamp">{{msg.timeStampString}}</div>
+        </div>
+      </div>
+    </div>
+    <button *ngIf="!chatrooms[selected].isMember" id="join-chat" (click)="onClickJoinGroup()">JOIN CHAT</button>
+    <form *ngIf="chatrooms[selected].isMember" (ngSubmit)="onClickSend()">
+      <input *ngIf="typeFile" type="file" single (change)="onFileSelect($event)">
+      <input *ngIf="!typeFile" name="message" id="m" autocomplete="off" [(ngModel)]="message"/>
+      <button class="button">Send</button>
+      <button class="button" (click)="switchMode($event)">Modus</button>
+    </form>
+  </div>
+</div>

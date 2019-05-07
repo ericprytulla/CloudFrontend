@@ -1,0 +1,30 @@
+<form *ngIf="login" class="login" (ngSubmit)="onClickLogin()">
+  <input [ngClass]="required?'required':''" name="username" type="text" placeholder="Username" [(ngModel)]="username">
+  <input [ngClass]="required?'required':''" name="password" type="password" placeholder="Password" [(ngModel)]="password">
+  <button class="button">Login</button>
+</form>
+<form *ngIf="!login" class="login" (ngSubmit)="onClickRegister()">
+  <div id="image-selector-wrapper">
+    <div id="default-text">Bild auswählen</div>
+    <img id="image-selector-image" [src]="image" alt="">
+    <input id="image-selector-input" type="file" single (change)="onFileSelect($event)" accept="image/png, image/jpeg">
+  </div>
+  <div id="language-selector">
+    <select name="lang" id="lang" [ngModel]="preferred_language">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+  <input [ngClass]="required?'required':''" name="username" type="text" placeholder="Username" [(ngModel)]="username">
+  <input [ngClass]="required?'required':''" name="password" type="password" placeholder="Password" [(ngModel)]="password">
+  <input [ngClass]="required?'required':''" name="repeat_password" type="password" placeholder="Repeat Password" [(ngModel)]="repeat_password">
+  <button class="button">Register</button>
+</form>
+<div *ngIf="login" class="registered_wrapper">
+  <label for="not_registered">Not registered yet?</label>
+  <button class="button" id="not_registered" (click)="login=false">Register now!</button>
+</div>
+<div *ngIf="!login" class="registered_wrapper">
+  <label for="registered">Already registered?</label>
+  <button class="button" id="registered" (click)="login=true">Login now!</button>
+</div>
